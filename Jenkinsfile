@@ -6,8 +6,8 @@ pipeline {
         DOCKER_CREDS_ID = 'dockerhub-credentials'
         
         // Image names following the format: username/rollnumber_service
-        FRONTEND_IMAGE = "${DOCKER_HUB_USER}/2023BCS0058_frontend"
-        BACKEND_IMAGE = "${DOCKER_HUB_USER}/2023BCS0058_backend"
+        FRONTEND_IMAGE = "${DOCKER_HUB_USER}/2023bcs0058_frontend"
+        BACKEND_IMAGE = "${DOCKER_HUB_USER}/2023bcs0058_backend"
         TAG = "${env.BUILD_NUMBER}"
 
         // GCP VM Details
