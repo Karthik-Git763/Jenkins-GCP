@@ -116,9 +116,9 @@ pipeline {
 
         stage('Deploy to GCP VM') {
             steps {
-                sshagent (credentials: [env.SSH_CREDENTIALS]) {
+                withCredentials([sshUserPrivateKey(credentialsId: env.SSH_CREDENTIALS, keyFileVariable: 'SSH_KEY')]) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no ${GCP_USER}@${GCP_VM_IP} << 'EOF'
+                    ssh -o StrictHostKeyChecking=no -i \$SSH_KEY ${GCP_USER}@${GCP_VM_IP} << 'EOF'
 
 echo "Pulling latest Docker images..."
 docker pull ${FRONTEND_IMAGE}:latest
