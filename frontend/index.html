@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jenkins</title>
+    <title>Student Info - DevOps Assignment</title>
     <style>
         * {
             margin: 0;
@@ -36,6 +36,24 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
+        .card h1 {
+            margin-bottom: 30px;
+            color: #00d2ff;
+            font-size: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
         .label {
             font-size: 0.9rem;
             color: #888;
@@ -48,20 +66,52 @@
             font-weight: 600;
             color: #00d2ff;
         }
+
+        .loading {
+            color: #888;
+            font-style: italic;
+        }
+
+        .error {
+            color: #ff4444;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+        }
+
+        .status.connected {
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
+        }
+
+        .status.disconnected {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff4444;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <div>
+            <h1>DevOps Assignment - Jenkins CI/CD</h1>
+            <div class="info-row">
                 <span class="label">Name</span>
-                <span class="value">{{ student.name }}</span>
+                <span class="value" id="student-name">Loading...</span>
             </div>
-            <div>
+            <div class="info-row">
                 <span class="label">Roll Number</span>
-                <span class="value">{{ student.roll_number }}</span>
+                <span class="value" id="student-roll">Loading...</span>
+            </div>
+            <div class="status" id="api-status">
+                Connecting to backend API...
             </div>
         </div>
     </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
